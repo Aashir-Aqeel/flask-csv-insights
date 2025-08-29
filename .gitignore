@@ -1,0 +1,9 @@
+﻿.venv/
+__pycache__/
+*.pyc
+*.db
+*.sqlite
+.DS_Store
+.env
+# optional: keep large sample CSVs out of the repo
+# *.csv

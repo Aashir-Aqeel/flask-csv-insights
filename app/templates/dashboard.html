@@ -1,0 +1,30 @@
+<!-- app/templates/dashboard.html -->
+{% extends "base.html" %}
+{% block title %}Dashboard | CSV Insights Lab{% endblock %}
+{% block content %}
+<h3>Your Datasets</h3>
+<a class="btn btn-primary my-3" href="{{ url_for('main.upload_page') }}">Upload CSV</a>
+
+{% if datasets %}
+<table class="table table-striped">
+  <thead><tr><th>Name</th><th>Uploaded</th><th>Latest Analysis</th></tr></thead>
+  <tbody>
+    {% for d in datasets %}
+    <tr>
+      <td>{{ d.original_name }}</td>
+      <td>{{ d.uploaded_at.strftime('%Y-%m-%d %H:%M') }}</td>
+      <td>
+        {% if d.analyses %}
+          <a href="{{ url_for('main.analysis_detail', analysis_id=d.analyses[-1].id) }}">View</a>
+        {% else %}
+          —
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No datasets yet. Upload your first CSV!</p>
+{% endif %}
+{% endblock %}

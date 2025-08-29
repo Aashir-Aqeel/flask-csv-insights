@@ -1,0 +1,12 @@
+<!-- app/templates/upload.html -->
+{% extends "base.html" %}
+{% block title %}Upload | CSV Insights Lab{% endblock %}
+{% block content %}
+<h3>Upload CSV</h3>
+<form method="post" action="{{ url_for('main.upload_post') }}" enctype="multipart/form-data" class="mt-3">
+  <div class="mb-3">
+    <input class="form-control" type="file" name="file" accept=".csv" required>
+  </div>
+  <button class="btn btn-primary" type="submit">Analyze</button>
+</form>
+{% endblock %}

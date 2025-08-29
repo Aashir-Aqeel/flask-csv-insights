@@ -1,0 +1,17 @@
+<!-- app/templates/analysis_detail.html -->
+{% extends "base.html" %}
+{% block title %}Analysis | CSV Insights Lab{% endblock %}
+{% block content %}
+<h3>Analysis Summary</h3>
+<pre class="bg-light p-3 rounded">{{ a.summary_json | tojson(indent=2) }}</pre>
+
+<h3 class="mt-4">Charts</h3>
+{% if images %}
+  {% for i in images %}
+    <h5 class="mt-3">{{ i.title }}</h5>
+    <img class="img-fluid border rounded" src="{{ i.data }}" alt="{{ i.title }}">
+  {% endfor %}
+{% else %}
+<p>No charts produced for this dataset.</p>
+{% endif %}
+{% endblock %}

@@ -73,6 +73,9 @@ def create_app():
     def server_error(e):
         app.logger.exception("Unhandled server error: %s", e)
         return render_template("500.html"), 500
+    @app.get("/healthz")
+    def healthz():
+        return "ok", 200
 
     return app
 
